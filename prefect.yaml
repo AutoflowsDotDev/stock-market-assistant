@@ -1,0 +1,35 @@
+# Prefect Deployment Configuration
+name: stock-market-assistant
+version: 1.0.0
+
+# Define the deployments
+deployments:
+  - name: stock-market-telegram-bot
+    entrypoint: stock_market_assistant.py:stock_market_bot_flow
+    work_pool:
+      name: default-agent-pool
+    
+    # Environment variables to inject
+    parameters: {}
+    
+    # Schedule (optional - bot runs continuously)
+    # schedule:
+    #   cron: "0 * * * *"  # Run every hour
+    
+    description: "Telegram bot that provides real-time stock market information using Yahoo Finance and OpenAI"
+    
+    tags:
+      - telegram
+      - stocks
+      - finance
+      - ai
+    
+    version: 1.0.0
+
+# Build configuration
+build: null
+
+# Pull configuration  
+pull:
+  - prefect.deployments.steps.set_working_directory:
+      directory: /home/rno321/repos/autoflows/claude-code-example

@@ -1,0 +1,7 @@
+prefect>=2.14.0
+python-telegram-bot>=20.7
+yfinance>=0.2.33
+openai>=1.12.0
+python-dotenv>=1.0.0
+httpx>=0.26.0
+pydantic>=2.5.0
