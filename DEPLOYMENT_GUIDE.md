@@ -27,6 +27,7 @@ python3 setup.py
 ```
 
 Required variables:
+
 - `TELEGRAM_BOT_TOKEN` - Your Telegram bot token
 - `OPENAI_API_KEY` - Your OpenAI API key
 - `PREFECT_API_KEY` - Your Prefect Cloud API key
@@ -39,11 +40,13 @@ Required variables:
 Before deploying, test the workflow locally:
 
 ### Test Yahoo Finance integration (no credentials needed):
+
 ```bash
 python3 test_simple.py
 ```
 
 ### Test with your credentials:
+
 ```bash
 # Load environment variables
 source .env  # or export $(cat .env | xargs)
@@ -63,10 +66,12 @@ prefect cloud login
 ```
 
 When prompted:
+
 1. Choose your workspace
 2. Or paste your API key directly
 
 Verify connection:
+
 ```bash
 prefect profile ls
 ```
@@ -84,11 +89,13 @@ prefect work-pool create default-agent-pool --type process
 ## Step 5: Deploy the Workflow
 
 ### Option A: Using the deployment script
+
 ```bash
 python3 deploy.py
 ```
 
 ### Option B: Using Prefect CLI
+
 ```bash
 prefect deploy stock_market_assistant.py:stock_market_bot_flow \
   --name stock-market-telegram-bot \
@@ -117,12 +124,15 @@ Update the workflow to use Prefect Secrets instead of environment variables.
 ## Step 7: Start a Worker
 
 ### Option A: Local worker (for testing)
+
 ```bash
 prefect worker start --pool default-agent-pool
 ```
 
 ### Option B: Cloud worker (recommended for production)
+
 Deploy to a cloud server (AWS, GCP, Azure, etc.) and run:
+
 ```bash
 prefect worker start --pool default-agent-pool
 ```
@@ -134,11 +144,13 @@ Keep the worker running (use systemd, supervisor, or Docker).
 ## Step 8: Run the Deployment
 
 ### Trigger manually from CLI:
+
 ```bash
 prefect deployment run stock-market-assistant/stock-market-telegram-bot
 ```
 
 ### Or from Prefect Cloud UI:
+
 1. Go to **Deployments**
 2. Find `stock-market-telegram-bot`
 3. Click **Quick Run**
@@ -150,6 +162,7 @@ prefect deployment run stock-market-assistant/stock-market-telegram-bot
 ### Docker Deployment
 
 Create a Dockerfile:
+
 ```dockerfile
 FROM python:3.10-slim
 
@@ -163,6 +176,7 @@ CMD ["prefect", "worker", "start", "--pool", "default-agent-pool"]
 ```
 
 Build and run:
+
 ```bash
 docker build -t stock-market-assistant .
 docker run -d --env-file .env stock-market-assistant
@@ -189,16 +203,19 @@ Deploy the worker as a serverless function for cost-effective hosting.
 ## Troubleshooting
 
 ### Bot not responding:
+
 - Check that the worker is running
 - Verify environment variables are set
 - Check Prefect Cloud logs
 
 ### API errors:
+
 - Verify API keys are correct
 - Check API rate limits
 - Ensure OpenAI account has credits
 
 ### Connection issues:
+
 - Check internet connectivity
 - Verify Prefect API URL is correct
 - Ensure firewall allows outbound connections

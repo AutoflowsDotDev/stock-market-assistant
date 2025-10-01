@@ -13,6 +13,6 @@ if __name__ == "__main__":
         description="Telegram bot that provides real-time stock market information",
         version="1.0.0",
     )
-    
+
     # Serve the deployment
     serve(deployment)

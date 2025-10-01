@@ -5,6 +5,7 @@ This guide will help you obtain all the necessary credentials to run the Stock M
 ## 1. Telegram Bot Token
 
 ### Steps:
+
 1. Open Telegram and search for `@BotFather`
 2. Start a chat and send `/newbot`
 3. Follow the prompts to name your bot
@@ -19,6 +20,7 @@ This guide will help you obtain all the necessary credentials to run the Stock M
 ## 2. OpenAI API Key
 
 ### Steps:
+
 1. Go to https://platform.openai.com/
 2. Sign in or create an account
 3. Navigate to **API Keys** section
@@ -35,6 +37,7 @@ This guide will help you obtain all the necessary credentials to run the Stock M
 ## 3. Prefect Cloud Account (Optional - for deployment)
 
 ### Steps:
+
 1. Go to https://app.prefect.cloud/
 2. Sign up for a free account
 3. Create a workspace
@@ -43,7 +46,8 @@ This guide will help you obtain all the necessary credentials to run the Stock M
 6. Copy the API key
 7. Note your API URL (format: `https://api.prefect.cloud/api/accounts/[ACCOUNT_ID]/workspaces/[WORKSPACE_ID]`)
 
-**Environment Variables**: 
+**Environment Variables**:
+
 - `PREFECT_API_KEY`
 - `PREFECT_API_URL`
 

@@ -30,23 +30,27 @@ A Prefect-powered workflow that provides real-time stock market information thro
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/AutoflowsDotDev/stock-market-assistant.git
 cd stock-market-assistant
 ```
 
 2. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 3. Configure environment variables:
+
 ```bash
 cp .env.example .env
 # Edit .env and add your credentials
 ```
 
 Required environment variables:
+
 - `TELEGRAM_BOT_TOKEN`: Your Telegram bot token
 - `OPENAI_API_KEY`: Your OpenAI API key
 
@@ -112,6 +116,7 @@ prefect worker start --pool default-agent-pool
 ## Error Handling
 
 The workflow includes:
+
 - Automatic retries for failed API calls
 - Graceful error messages to users
 - Comprehensive logging for debugging
