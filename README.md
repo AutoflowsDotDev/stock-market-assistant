@@ -72,37 +72,57 @@ Once the bot is running, send it a message on Telegram:
 
 ## Deployment to Prefect Cloud
 
+### Deployment is GitHub-Based! 🚀
+
+The workflow is deployed directly from the GitHub repository using `prefect.yaml`.
+
 ### Step 1: Authenticate with Prefect Cloud
 
 ```bash
 prefect cloud login
 ```
 
-### Step 2: Create a deployment
+### Step 2: Deploy using prefect.yaml
 
 ```bash
-prefect deploy stock_market_assistant.py:stock_market_bot_flow \
-    --name stock-market-telegram-bot \
-    --pool default-agent-pool \
-    --cron "0 0 * * *" \
-    --version 1.0.0
+# Deploy all deployments (pulls from GitHub)
+prefect deploy --all
 ```
+
+The deployment will automatically clone from:
+- **Repository**: https://github.com/AutoflowsDotDev/stock-market-assistant
+- **Branch**: `master`
 
 ### Step 3: Start a worker
 
 ```bash
-prefect worker start --pool default-agent-pool
+prefect worker start --pool default-work-pool
 ```
+
+**Note**: Workers will automatically pull the latest code from GitHub on each run!
+
+See `GITHUB_DEPLOYMENT.md` for detailed GitHub deployment documentation.
 
 ## Project Structure
 
 ```
 .
 ├── stock_market_assistant.py  # Main workflow file
+├── prefect.yaml               # Prefect deployment config (GitHub-based)
 ├── requirements.txt           # Python dependencies
-├── .env.example              # Example environment variables
-├── .gitignore               # Git ignore file
-└── README.md                # This file
+├── README.md                  # This file
+├── QUICK_START.md            # Quick start guide
+├── GITHUB_DEPLOYMENT.md      # GitHub deployment guide
+├── DEPLOYMENT_GUIDE.md       # Detailed deployment instructions
+├── DEPLOYMENT_SUCCESS.md     # Deployment summary
+├── CREDENTIALS_GUIDE.md      # How to get credentials
+├── run_bot.sh                # Run bot locally
+├── run_worker.sh             # Run Prefect worker
+├── check_status.sh           # Check system status
+├── setup.py                  # Interactive setup wizard
+├── test_simple.py            # Simple tests
+├── test_workflow.py          # Full workflow tests
+└── .gitignore               # Git ignore file
 ```
 
 ## Technologies Used
